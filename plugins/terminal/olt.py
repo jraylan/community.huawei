@@ -81,6 +81,9 @@ class TerminalModule(TerminalBase):
         )
     ]
 
+    terminal_initial_prompt = re.compile(
+        rb"[\r\n]?^[\w\+\-\.:\/\[\]]+(?:\(config+\))?(?:[>#]) ?$")
+
     terminal_config_prompt = re.compile(r"^.+\(config\)#$")
 
     def get_privilege_level(self):
