@@ -1,23 +1,27 @@
 ---
 # See https://docs.ansible.com/ansible/latest/dev_guide/collections_galaxy_meta.html
 
-namespace: community
-name: FIXME
+namespace: huawei
+name: olt
 version: 0.1.0
 readme: README.md
 authors:
-  - YOUR NAME (github.com/YOURGITHUB)
-description: null
-license_file: LICENSE
+  - Raylan (github.com/jraylan)
+dependencies:
+  "ansible.netcommon": ">=6.1.0"
+description: Modules and plugins for Huawei devices
+license:
+  - GPL-3.0-or-later
 tags:
 # tags so people can search for collections https://galaxy.ansible.com/search
 # tags are all lower-case, no spaces, no dashes.
-  - example1
-  - example2
-repository: https://github.com/ansible-collections/community.REPO_NAME
-#documentation: https://github.com/ansible-collection-migration/community.REPO_NAME/tree/main/docs
-homepage: https://github.com/ansible-collections/community.REPO_NAME
-issues: https://github.com/ansible-collections/community.REPO_NAME/issues
+  - network
+  - huawei
+  - olt
+repository: https://github.com/jraylan/huawei.olt
+#documentation: https://github.com/ansible-collection-migration/huawei.olt/tree/main/docs
+homepage: https://github.com/jraylan/huawei.olt
+issues: https://github.com/jraylan/huawei.olt/issues
 build_ignore:
 # https://docs.ansible.com/ansible/devel/dev_guide/developing_collections_distributing.html#ignoring-files-and-folders
   - .gitignore
