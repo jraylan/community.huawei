@@ -50,43 +50,43 @@ class TerminalModule(TerminalBase):
             re.M
         ),
         # Pre-timeout warning
-        re.compile(
-            rb"^([\r\n])+\s+"
-            rb"Please check whether system data has been changed, and save "
-            rb"data in time([\r\n]$)+",
-            re.M
-        ),
+        # re.compile(
+        #     rb"^([\r\n])+\s+"
+        #     rb"Please check whether system data has been changed, and save "
+        #     rb"data in time([\r\n]$)+",
+        #     re.M
+        # ),
         # Timeout
         re.compile(
             rb"^\s+Configuration console time out, please retry to log on$",
             re.M
         ),
         # Saving alert
-        re.compile(
-            rb"^\s+It will take several minutes to save configuration file, "
-            rb"please wait...$",
-            re.M
-        ),
+        # re.compile(
+        #     rb"^\s+It will take several minutes to save configuration file, "
+        #     rb"please wait...$",
+        #     re.M
+        # ),
         # Saving success
-        re.compile(
-            rb"^\s+ Configuration file had been saved successfully([\n\r]+)$",
-            re.M
-        ),
+        # re.compile(
+        #     rb"^\s+ Configuration file had been saved successfully([\n\r]+)$",
+        #     re.M
+        # ),
         # Logging/Warnings
-        re.compile(
-            rb"^\s+(\d+\s+\[[0-9\-\:\s\+Z]{19,}\]|Warning):(.*[\n\r]?)*?$",
-            re.M
-        ),
-        re.compile(
-            rb"---- More ( Press 'Q' to break ) ----",
-            re.M
-        ),
-        re.compile(
-            rb"^\s+It will take a long time if the content you search is "
-            rb"too much or the string you input is too long, "
-            rb"you can press CTRL_C to break\s+$[\n\r]",
-            re.M
-        )
+        # re.compile(
+        #     rb"^\s+(\d+\s+\[[0-9\-\:\s\+Z]{19,}\]|Warning):(.*[\n\r]?)*?$",
+        #     re.M
+        # ),
+        # re.compile(
+        #     rb"---- More ( Press 'Q' to break ) ----",
+        #     re.M
+        # ),
+        # re.compile(
+        #     rb"^\s+It will take a long time if the content you search is "
+        #     rb"too much or the string you input is too long, "
+        #     rb"you can press CTRL_C to break\s+$[\n\r]",
+        #     re.M
+        # )
     ]
 
     terminal_initial_prompt = [
