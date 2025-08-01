@@ -102,6 +102,25 @@ class TerminalModule(TerminalBase):
 
     terminal_config_prompt = re.compile(r"^.+\(config\)#$")
 
+    def _exec_cli_command(self, cmd, check_rc=True):
+        """
+        Executes the CLI command on the remote device and returns
+        the output
+
+        :arg cmd: Byte string command to be executed
+        """
+        result = self._connection.exec_command(cmd)
+
+        if isinstance(result, memoryview):
+            result = result.tobytes()
+
+        if isinstance(result, bytes):
+            result = result.decode("utf-8", errors="ignore").encode("utf-8")
+        elif isinstance(result, str):
+            result = result.encode("utf-8", errors="ignore")
+
+        return result
+
     def get_privilege_level(self):
         prompt = self._get_prompt()
         return 1 + prompt.endswith(b"#") * 14
