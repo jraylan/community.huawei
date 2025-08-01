@@ -41,6 +41,14 @@ class TerminalModule(TerminalBase):
             re.M)
     ]
 
+    #: compiled bytes regular expressions to remove ANSI codes
+    ansi_re = [
+        re.compile(rb"\x1b\[\?1h\x1b="),  # CSI ? 1 h ESC =
+        re.compile(rb"\x08."),  # [Backspace] .
+        re.compile(rb"\x1b\[m"),  # ANSI reset code
+        re.compile(rb"[\udc00-\udcff\]"),  # Mismatch utf-8
+    ]
+
     terminal_stderr_re = [
         # Command error
         re.compile(
