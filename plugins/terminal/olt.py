@@ -36,53 +36,62 @@ display = Display()
 
 class TerminalModule(TerminalBase):
     terminal_stdout_re = [
-        re.compile(rb"[\r\n]?^[\w\+\-\.:\/\[\]]+(?:\(config+\))?(?:[>#]) ?$")
+        re.compile(
+            rb"[\r\n]?^[\w\+\-\.:\/\[\]]+(?:\(config+\))?(?:[>#]) ?$",
+            re.M)
     ]
-
-    privilege_level_re = re.compile(r"Current privilege level is (\d+)$")
 
     terminal_stderr_re = [
         # Command error
         re.compile(
             rb"^(\{[^\}]+\}:$([\r\n]$)+^\s+Command:$\s+.*?$)?"
             rb"\s*[\^]([\r\n]+)"
-            rb"\s+\% (.*), the error locates at '\^'([\r\n]+)"
+            rb"\s+\% (.*), the error locates at '\^'([\r\n]+)",
+            re.M
         ),
         # Pre-timeout warning
         re.compile(
             rb"^([\r\n])+\s+"
             rb"Please check whether system data has been changed, and save "
-            rb"data in time([\r\n]$)+"
+            rb"data in time([\r\n]$)+",
+            re.M
         ),
         # Timeout
         re.compile(
-            rb"^\s+Configuration console time out, please retry to log on$"
+            rb"^\s+Configuration console time out, please retry to log on$",
+            re.M
         ),
         # Saving alert
         re.compile(
             rb"^\s+It will take several minutes to save configuration file, "
-            rb"please wait...$"
+            rb"please wait...$",
+            re.M
         ),
         # Saving success
         re.compile(
-            rb"^\s+ Configuration file had been saved successfully([\n\r]+)$"
+            rb"^\s+ Configuration file had been saved successfully([\n\r]+)$",
+            re.M
         ),
         # Logging/Warnings
         re.compile(
-            rb"^\s+(\d+\s+\[[0-9\-\:\s\+Z]{19,}\]|Warning):(.*[\n\r]?)*?$"
+            rb"^\s+(\d+\s+\[[0-9\-\:\s\+Z]{19,}\]|Warning):(.*[\n\r]?)*?$",
+            re.M
         ),
         re.compile(
-            rb"---- More ( Press 'Q' to break ) ----"
+            rb"---- More ( Press 'Q' to break ) ----",
+            re.M
         ),
         re.compile(
             rb"^\s+It will take a long time if the content you search is "
             rb"too much or the string you input is too long, "
-            rb"you can press CTRL_C to break\s+$[\n\r]"
+            rb"you can press CTRL_C to break\s+$[\n\r]",
+            re.M
         )
     ]
 
-    terminal_initial_prompt = re.compile(
-        rb"[\r\n]?^[\w\+\-\.:\/\[\]]+(?:\(config+\))?(?:[>#]) ?$")
+    terminal_initial_prompt = [
+        rb"[\r\n]?^[\w\+\-\.:\/\[\]]+(?:\(config+\))?(?:[>#]) ?$",
+    ]
 
     terminal_config_prompt = re.compile(r"^.+\(config\)#$")
 
