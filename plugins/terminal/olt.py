@@ -37,8 +37,8 @@ display = Display()
 class TerminalModule(TerminalBase):
     terminal_stdout_re = [
         re.compile(
-            rb"[\r\n]?^[\w\+\-\.:\/\[\]]+(?:\(config+\))?(?:[>#]) ?$",
-            re.M)
+            rb"[\r\n]?^[\w\+\-\.:\/\[\]]+(?:\(config+\))?(?:[>#]) ?"
+            rb"(([^\r\n]+\x00)|)$", re.M),
     ]
 
     #: compiled bytes regular expressions to remove ANSI codes
